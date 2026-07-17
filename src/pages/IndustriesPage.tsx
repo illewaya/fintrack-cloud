@@ -52,20 +52,17 @@ export default function IndustriesPage() {
         {/* Industries Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {filteredIndustries.map((industry, index) => (
-            <button
+            <div
               key={index}
-              className="bg-white p-6 sm:p-8 rounded-lg shadow-md hover:shadow-xl hover:border-png-red border-2 border-transparent transition transform hover:scale-105 text-left"
+              className="bg-white p-6 sm:p-8 rounded-lg shadow-md hover:shadow-xl border-l-4 border-png-red transition"
             >
               <h3 className="text-lg sm:text-xl font-bold text-png-black mb-2">
                 {industry}
               </h3>
-              <p className="text-gray-600 text-sm mb-4">
-                View requirements, licenses, permits, and compliance checklist
+              <p className="text-gray-600 text-sm">
+                Requires licenses, permits, and compliance checklist
               </p>
-              <div className="text-png-red font-semibold text-sm hover:text-png-gold transition">
-                Learn More →
-              </div>
-            </button>
+            </div>
           ))}
         </div>
 

@@ -1,4 +1,4 @@
-import { BookOpen, ArrowRight } from 'lucide-react'
+import { BookOpen } from 'lucide-react'
 
 export default function LearningCentrePage() {
   const articles = [
@@ -38,20 +38,20 @@ export default function LearningCentrePage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {articles.map((article, index) => (
-            <button
+            <div
               key={index}
-              className="bg-white p-6 sm:p-8 rounded-lg shadow-md hover:shadow-xl hover:border-png-red border-2 border-transparent transition transform hover:scale-105 text-left"
+              className="bg-white p-6 sm:p-8 rounded-lg shadow-md hover:shadow-xl border-l-4 border-png-red transition"
             >
-              <div className="flex items-start justify-between mb-4">
+              <div className="mb-4">
                 <BookOpen className="w-8 h-8 text-png-red" />
               </div>
               <h3 className="text-lg font-bold text-png-black mb-3">
                 {article}
               </h3>
-              <div className="flex items-center text-png-red font-semibold text-sm hover:text-png-gold transition">
-                Read Article <ArrowRight className="ml-2 w-4 h-4" />
-              </div>
-            </button>
+              <p className="text-gray-600 text-sm">
+                Comprehensive guide to help you succeed in this area of business management
+              </p>
+            </div>
           ))}
         </div>
       </div>

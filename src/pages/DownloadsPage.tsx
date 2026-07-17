@@ -1,4 +1,4 @@
-import { Download, FileText } from 'lucide-react'
+import { FileText } from 'lucide-react'
 
 export default function DownloadsPage() {
   const downloads = [
@@ -32,27 +32,26 @@ export default function DownloadsPage() {
             Download Centre
           </h1>
           <p className="text-gray-600 text-base sm:text-lg max-w-2xl mx-auto">
-            Free business templates and resources for PNG businesses
+            Free business templates and resources for PNG businesses - Available in Excel and PDF formats
           </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {downloads.map((download, index) => (
-            <button
+            <div
               key={index}
-              className="bg-white p-6 sm:p-8 rounded-lg shadow-md hover:shadow-xl border-l-4 border-png-red hover:border-png-gold transition transform hover:scale-105 text-left"
+              className="bg-white p-6 sm:p-8 rounded-lg shadow-md hover:shadow-xl border-l-4 border-png-red transition"
             >
-              <div className="flex items-start justify-between mb-4">
+              <div className="mb-4">
                 <FileText className="w-8 h-8 text-png-red" />
-                <Download className="w-5 h-5 text-gray-400 hover:text-png-gold" />
               </div>
-              <h3 className="text-lg font-bold text-png-black">
+              <h3 className="text-lg font-bold text-png-black mb-2">
                 {download}
               </h3>
-              <p className="text-gray-600 text-sm mt-2">
-                Download as Excel or PDF
+              <p className="text-gray-600 text-sm">
+                Available in Excel and PDF formats
               </p>
-            </button>
+            </div>
           ))}
         </div>
       </div>
