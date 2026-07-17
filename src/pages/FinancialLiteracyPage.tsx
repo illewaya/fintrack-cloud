@@ -1,5 +1,5 @@
 import { Layout } from '@/components/Layout'
-import { useState } from 'react'
+
 
 const lessons = [
   {
@@ -77,7 +77,7 @@ export default function FinancialLiteracyPage() {
             <div
               key={lesson.id}
               className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition cursor-pointer"
-              onClick={() => setSelectedLesson(lesson.id)}
+              onClick={() => console.log('Lesson selected:', lesson.id)}
             >
               <div className="flex justify-between items-start mb-3">
                 <h3 className="font-bold text-gray-900">{lesson.title}</h3>

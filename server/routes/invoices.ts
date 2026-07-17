@@ -81,7 +81,7 @@ router.post('/', async (req: Request, res: Response) => {
       })
     }
 
-    res.status(201).json({ id: invoiceId, ...result[0] })
+    res.status(201).json({ invoiceId, ...result[0] })
   } catch (error) {
     console.error(error)
     res.status(500).json({ error: 'Failed to create invoice' })

@@ -11,13 +11,7 @@ import reportsRouter from './routes/reports'
 import cashflowRouter from './routes/cashflow'
 import authMiddleware from './middleware/auth'
 
-declare global {
-  namespace Express {
-    interface Request {
-      session?: any
-    }
-  }
-}
+
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const app = express()
@@ -165,7 +159,7 @@ app.get('/api/health', (_req: Request, res: Response) => {
 app.use(express.static(path.join(__dirname, '../dist/public')))
 
 // SPA fallback
-app.get('*', (req: Request, res: Response) => {
+app.get('*', (_req: Request, res: Response) => {
   res.sendFile(path.join(__dirname, '../dist/public/index.html'))
 })
 
