@@ -1,13 +1,13 @@
 import { useAuth } from '@/hooks/useAuth'
 import { Layout } from '@/components/Layout'
 import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts'
-import { useFinancialSummary, useMonthlyData, useExpensesByCategory, useCashBalance, useAIRecommendations } from '@/hooks/useFinancialData'
+import { useFinancialSummary, useMonthlyData, useExpensesByCategoryReport, useCashBalance, useAIRecommendations } from '@/hooks/useFinancialData'
 
 export default function DashboardPage() {
   const { user } = useAuth()
   const { data: summary, isLoading: summaryLoading } = useFinancialSummary()
   const { data: monthlyData, isLoading: monthlyLoading } = useMonthlyData()
-  const { data: expenseBreakdown, isLoading: expensesLoading } = useExpensesByCategory()
+  const { data: expenseBreakdown, isLoading: expensesLoading } = useExpensesByCategoryReport()
   const { data: balance, isLoading: balanceLoading } = useCashBalance()
   const { data: recommendations, isLoading: recommendationsLoading } = useAIRecommendations()
 

@@ -33,7 +33,7 @@ const lessons = [
 ]
 
 export default function FinancialLiteracyPage() {
-  const [selectedLesson, setSelectedLesson] = useState<number | null>(null)
+  // const [selectedLesson, setSelectedLesson] = useState<number | null>(null)
 
   return (
     <Layout>

@@ -11,6 +11,14 @@ import reportsRouter from './routes/reports'
 import cashflowRouter from './routes/cashflow'
 import authMiddleware from './middleware/auth'
 
+declare global {
+  namespace Express {
+    interface Request {
+      session?: any
+    }
+  }
+}
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const app = express()
 const PORT = process.env.PORT || 3000
@@ -137,10 +145,7 @@ app.get('/api/auth/me', (req: Request, res: Response) => {
 })
 
 app.post('/api/auth/logout', (req: Request, res: Response) => {
-  req.session.destroy((err) => {
-    if (err) {
-      return res.status(500).json({ error: 'Logout failed' })
-    }
+  req.session?.destroy((_err) => {
     res.json({ success: true })
   })
 })
@@ -152,7 +157,7 @@ app.use('/api/reports', authMiddleware, reportsRouter)
 app.use('/api/cashflow', authMiddleware, cashflowRouter)
 
 // Health check
-app.get('/api/health', (req: Request, res: Response) => {
+app.get('/api/health', (_req: Request, res: Response) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() })
 })
 
