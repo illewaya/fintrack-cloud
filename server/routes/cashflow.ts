@@ -1,6 +1,6 @@
 import { Router, Request, Response } from 'express'
 import { db } from '../db'
-import { invoices, expenses, cashFlowForecasts } from '../db/schema'
+import { invoices, expenses } from '../db/schema'
 import { eq, and, gte } from 'drizzle-orm'
 
 const router = Router()

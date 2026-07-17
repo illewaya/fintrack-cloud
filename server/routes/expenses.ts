@@ -41,7 +41,7 @@ router.get('/category/:category', async (req: Request, res: Response) => {
 router.post('/', async (req: Request, res: Response) => {
   try {
     const userId = (req as any).userId
-    const { category, description, amount, vendor, paymentMethod, expenseDate, receiptUrl } = req.body
+    const { category, description, amount, paymentMethod, expenseDate } = req.body
 
     // Calculate GST (10%)
     const gstAmount = (parseFloat(amount) * 0.1).toString()
@@ -53,8 +53,7 @@ router.post('/', async (req: Request, res: Response) => {
       amount: amount.toString(),
       gstAmount,
       paymentMethod,
-      receiptUrl,
-      expenseDate: new Date(expenseDate),
+      expenseDate: expenseDate ? new Date(expenseDate) : new Date(),
     }).returning()
 
     res.status(201).json(result[0])
@@ -69,7 +68,7 @@ router.patch('/:id', async (req: Request, res: Response) => {
   try {
     const userId = (req as any).userId
     const expenseId = parseInt(req.params.id)
-    const { category, description, amount, vendor, paymentMethod } = req.body
+    const { category, description, amount, paymentMethod } = req.body
 
     const result = await db.update(expenses)
       .set({
