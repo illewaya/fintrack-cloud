@@ -1,0 +1,58 @@
+{
+  "name": "fintrack-cloud",
+  "version": "1.0.0",
+  "description": "PNG-first AI-powered accounting platform for businesses",
+  "type": "module",
+  "main": "dist/server.js",
+  "scripts": {
+    "dev": "concurrently -k \"pnpm dev:server\" \"pnpm dev:client\"",
+    "dev:server": "cross-env NODE_ENV=development tsx watch server/index.ts",
+    "dev:client": "vite",
+    "build": "vite build && tsc --noEmit && pnpm build:server",
+    "build:server": "esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist",
+    "preview": "vite preview",
+    "start": "NODE_ENV=production node dist/index.js",
+    "type-check": "tsc --noEmit",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:push": "drizzle-kit push",
+    "db:studio": "drizzle-kit studio",
+    "db:migrate:prod": "drizzle-kit migrate --config drizzle.config.ts"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^5.90.12",
+    "axios": "^1.13.2",
+    "date-fns": "^3.6.0",
+    "drizzle-orm": "^0.45.2",
+    "express": "^4.22.1",
+    "express-session": "^1.19.0",
+    "pg": "^8.22.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.24.0",
+    "recharts": "^2.12.7",
+    "zod": "^4.2.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/express": "^4.17.25",
+    "@types/node": "^22.19.3",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.0",
+    "autoprefixer": "^10.5.4",
+    "concurrently": "^9.2.1",
+    "cross-env": "^7.0.3",
+    "drizzle-kit": "^0.31.10",
+    "esbuild": "^0.25.0",
+    "tailwindcss": "^4.3.3",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3",
+    "vite": "^5.3.1"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=9.0.0"
+  },
+  "packageManager": "pnpm@9.12.0"
+}

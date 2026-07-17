@@ -1,0 +1,72 @@
+name: Database Migration
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'server/db/schema.ts'
+      - 'drizzle.config.ts'
+  workflow_dispatch:
+
+env:
+  PNPM_VERSION: 9.12.0
+  NODE_VERSION: 18.x
+
+jobs:
+  migrate:
+    name: Run Database Migrations
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Generate migrations
+        run: pnpm db:generate
+
+      - name: Check for new migrations
+        id: check_migrations
+        run: |
+          if [ -n "$(git status --porcelain server/db/migrations/)" ]; then
+            echo "has_migrations=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_migrations=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit migrations
+        if: steps.check_migrations.outputs.has_migrations == 'true'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add server/db/migrations/
+          git commit -m "chore: auto-generate database migrations"
+
+      - name: Push migrations
+        if: steps.check_migrations.outputs.has_migrations == 'true'
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
+
+      - name: Notify migration status
+        run: |
+          if [ "${{ steps.check_migrations.outputs.has_migrations }}" == "true" ]; then
+            echo "✅ Database migrations generated and committed"
+          else
+            echo "ℹ️  No new migrations needed"
+          fi
