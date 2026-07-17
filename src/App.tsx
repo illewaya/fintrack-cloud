@@ -1,52 +1,50 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { AuthProvider } from '@/hooks/useAuth'
-import { ProtectedRoute } from '@/components/ProtectedRoute'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Navigation from './components/Navigation'
+import Footer from './components/Footer'
+import HomePage from './pages/HomePage'
+import SetupWizardPage from './pages/SetupWizardPage'
+import BusinessStructuresPage from './pages/BusinessStructuresPage'
+import IndustriesPage from './pages/IndustriesPage'
+import RegistrationPage from './pages/RegistrationPage'
+import TaxCentrePage from './pages/TaxCentrePage'
+import FinancePage from './pages/FinancePage'
+import DownloadsPage from './pages/DownloadsPage'
+import LearningCentrePage from './pages/LearningCentrePage'
+import GovernmentDirectoryPage from './pages/GovernmentDirectoryPage'
+import FundingCentrePage from './pages/FundingCentrePage'
+import AssistantPage from './pages/AssistantPage'
+import DashboardPage from './pages/DashboardPage'
+import AdminPage from './pages/AdminPage'
+import NotFoundPage from './pages/NotFoundPage'
 
-
-// Pages
-import LoginPage from '@/pages/LoginPage'
-import RegisterPage from '@/pages/RegisterPage'
-import DashboardPage from '@/pages/DashboardPage'
-import InvoicesPage from '@/pages/InvoicesPage'
-import ExpensesPage from '@/pages/ExpensesPage'
-import ReportsPage from '@/pages/ReportsPage'
-import SettingsPage from '@/pages/SettingsPage'
-import CashFlowPage from '@/pages/CashFlowPage'
-import FinancialLiteracyPage from '@/pages/FinancialLiteracyPage'
-
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      staleTime: 1000 * 60 * 5, // 5 minutes
-      gcTime: 1000 * 60 * 10, // 10 minutes
-    },
-  },
-})
-
-export default function App() {
+function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <AuthProvider>
-        <BrowserRouter>
+    <Router>
+      <div className="flex flex-col min-h-screen bg-white">
+        <Navigation />
+        <main className="flex-grow">
           <Routes>
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/register" element={<RegisterPage />} />
-            
-            <Route element={<ProtectedRoute />}>
-              <Route path="/dashboard" element={<DashboardPage />} />
-              <Route path="/invoices" element={<InvoicesPage />} />
-              <Route path="/expenses" element={<ExpensesPage />} />
-              <Route path="/reports" element={<ReportsPage />} />
-              <Route path="/cash-flow" element={<CashFlowPage />} />
-              <Route path="/financial-literacy" element={<FinancialLiteracyPage />} />
-              <Route path="/settings" element={<SettingsPage />} />
-            </Route>
-
-            <Route path="/" element={<Navigate to="/dashboard" replace />} />
+            <Route path="/" element={<HomePage />} />
+            <Route path="/setup-wizard" element={<SetupWizardPage />} />
+            <Route path="/business-structures" element={<BusinessStructuresPage />} />
+            <Route path="/industries" element={<IndustriesPage />} />
+            <Route path="/registration" element={<RegistrationPage />} />
+            <Route path="/tax" element={<TaxCentrePage />} />
+            <Route path="/finance" element={<FinancePage />} />
+            <Route path="/downloads" element={<DownloadsPage />} />
+            <Route path="/learn" element={<LearningCentrePage />} />
+            <Route path="/government" element={<GovernmentDirectoryPage />} />
+            <Route path="/funding" element={<FundingCentrePage />} />
+            <Route path="/assistant" element={<AssistantPage />} />
+            <Route path="/dashboard" element={<DashboardPage />} />
+            <Route path="/admin" element={<AdminPage />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
-        </BrowserRouter>
-      </AuthProvider>
-    </QueryClientProvider>
+        </main>
+        <Footer />
+      </div>
+    </Router>
   )
 }
+
+export default App

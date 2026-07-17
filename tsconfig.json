@@ -13,17 +13,14 @@
     "noFallthroughCasesInSwitch": true,
     "resolveJsonModule": true,
     "moduleResolution": "bundler",
-    "types": ["vite/client"],
     "allowImportingTsExtensions": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "isolatedModules": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"],
-      "@server/*": ["server/*"]
+      "@/*": ["src/*"]
     }
   },
-  "include": ["src", "server", "vite-env.d.ts"],
+  "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

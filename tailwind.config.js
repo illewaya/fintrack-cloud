@@ -7,8 +7,14 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#1e3a8a',
-        secondary: '#d4af37',
+        'png-black': '#000000',
+        'png-red': '#CE1126',
+        'png-gold': '#FFD700',
+        'png-dark': '#1a1a1a',
+        'png-light': '#f8f9fa',
+      },
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif'],
       },
     },
   },

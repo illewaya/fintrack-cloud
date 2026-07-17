@@ -1,112 +1,165 @@
-# FinTrack Cloud - PNG-First Accounting Platform
+# FinTrack PNG - Business Resource Platform
 
-A comprehensive web-based accounting platform designed specifically for Papua New Guinea businesses, with features for invoicing, expense tracking, cash flow forecasting, and AI-powered financial coaching.
+A comprehensive online resource for starting, registering, managing, and growing a business in Papua New Guinea.
 
 ## Features
 
-### Core Accounting
-- **Dashboard** - Real-time financial overview with key metrics
-- **Invoicing** - Create and manage professional invoices with GST
-- **Expense Tracking** - Categorize and track business expenses
-- **Financial Reports** - Detailed P&L, tax compliance, and analytics
-
-### PNG-Specific Features
-- **IRC Tax Compliance** - Automatic 30% tax calculation and reporting
-- **GST Management** - 10% GST tracking for invoices and expenses
-- **Chart of Accounts** - PNG-compliant account templates
-- **Sector Templates** - Pre-built templates for Retail, Agriculture, Transport, Construction, Services, NGOs, and Churches
-
-### AI & Intelligence
-- **Cash Flow Forecasting** - 30, 60, and 90-day cash position predictions
-- **AI Business Coach** - Intelligent insights and recommendations
-- **Financial Literacy** - Built-in lessons and glossary
-- **Overdue Tracking** - Automatic alerts for unpaid invoices
-
-### Accessibility
-- **Multi-language** - English and Tok Pisin support
-- **Offline Support** - Data entry works offline with auto-sync
-- **Responsive Design** - Works on desktop, tablet, and mobile
-- **Financial Literacy** - Lessons and tooltips for non-accountants
+✅ **Business Setup Wizard** - Interactive questionnaire with personalized guidance
+✅ **40+ Industry Guides** - Detailed requirements for PNG industries
+✅ **Business Structures** - Complete guides for all PNG business types
+✅ **Registration Guides** - Step-by-step registration instructions
+✅ **Tax Centre** - Tax calculators and compliance guides
+✅ **Financial Tools** - Business calculators and planning tools
+✅ **Download Centre** - Free business templates
+✅ **Learning Centre** - Articles on business management
+✅ **Government Directory** - Contact details for PNG agencies
+✅ **Funding Centre** - Funding options and resources
+✅ **AI Business Assistant** - Chatbot for business questions
+✅ **Member Dashboard** - Save progress and bookmarks
+✅ **Admin Dashboard** - Content management system
 
 ## Tech Stack
 
-- **Frontend**: React 18 + TypeScript + Tailwind CSS
-- **Backend**: Express.js + Node.js
-- **Database**: PostgreSQL (with Drizzle ORM)
-- **Charts**: Recharts
-- **State Management**: React Query + Context API
+- **Frontend**: React 18, TypeScript, Tailwind CSS, Vite
+- **Icons**: Lucide React
+- **Routing**: React Router v6
+- **Styling**: Tailwind CSS with PNG national colors (Black, Red, Gold)
 
 ## Getting Started
-
-### Prerequisites
-- Node.js 18+
-- pnpm 9+
 
 ### Installation
 
 ```bash
-# Install dependencies
+npm install
+# or
 pnpm install
+```
 
-# Start development server
+### Development
+
+```bash
+npm run dev
+# or
 pnpm dev
+```
 
-# Build for production
+Visit `http://localhost:5173` in your browser.
+
+### Build
+
+```bash
+npm run build
+# or
 pnpm build
-
-# Start production server
-pnpm start
 ```
 
 ## Project Structure
 
 ```
-fintrack-cloud/
-├── src/
-│   ├── components/       # Reusable React components
-│   ├── pages/           # Page components
-│   ├── hooks/           # Custom React hooks
-│   ├── services/        # API services
-│   ├── types/           # TypeScript types
-│   ├── utils/           # Utility functions
-│   ├── styles/          # Global styles
-│   ├── App.tsx          # Main app component
-│   └── main.tsx         # Entry point
-├── server/
-│   ├── index.ts         # Express server
-│   ├── routes/          # API routes
-│   ├── middleware/      # Express middleware
-│   └── services/        # Business logic
-├── public/              # Static assets
-├── index.html           # HTML template
-├── vite.config.ts       # Vite configuration
-├── tailwind.config.js   # Tailwind configuration
-└── tsconfig.json        # TypeScript configuration
+src/
+├── components/
+│   ├── Navigation.tsx
+│   └── Footer.tsx
+├── pages/
+│   ├── HomePage.tsx
+│   ├── SetupWizardPage.tsx
+│   ├── BusinessStructuresPage.tsx
+│   ├── IndustriesPage.tsx
+│   ├── RegistrationPage.tsx
+│   ├── TaxCentrePage.tsx
+│   ├── FinancePage.tsx
+│   ├── DownloadsPage.tsx
+│   ├── LearningCentrePage.tsx
+│   ├── GovernmentDirectoryPage.tsx
+│   ├── FundingCentrePage.tsx
+│   ├── AssistantPage.tsx
+│   ├── DashboardPage.tsx
+│   ├── AdminPage.tsx
+│   └── NotFoundPage.tsx
+├── App.tsx
+├── main.tsx
+└── index.css
 ```
 
-## Features Roadmap
+## Color Scheme
 
-- [ ] Database integration with PostgreSQL
-- [ ] Advanced invoice customization
-- [ ] Receipt scanning with OCR
-- [ ] Email invoice delivery
-- [ ] Business readiness scoring
-- [ ] Funding assistant
-- [ ] Procurement readiness assessment
-- [ ] Donor reporting templates
-- [ ] Multi-user team collaboration
-- [ ] Mobile app version
+- **Primary Black**: #000000
+- **Secondary Red**: #CE1126
+- **Accent Gold**: #FFD700
+- **Background**: #FFFFFF
+- **Light Background**: #f8f9fa
 
-## PNG Compliance
+## Responsive Design
 
-FinTrack is built with PNG businesses in mind:
+- ✅ Mobile-first approach
+- ✅ Fully responsive (375px - 1920px+)
+- ✅ Touch-friendly buttons
+- ✅ Optimized for all devices
 
-- **IRC Tax**: Automatic 30% tax calculation for individual/partnership businesses
-- **GST**: 10% Goods and Services Tax tracking
-- **Currency**: All amounts in Papua New Guinea Kina (K)
-- **Language**: English and Tok Pisin support
-- **Sector Support**: Templates for common PNG business types
+## Features Implemented
+
+### Phase 1: Architecture & Design ✅
+- Database schema planning
+- Page structure design
+- Color scheme definition
+- API endpoint planning
+
+### Phase 2: Core Website ✅
+- Homepage with hero banner
+- Navigation and footer
+- Responsive design
+- PNG branding
+
+### Phase 3: Business Setup Wizard ✅
+- Multi-step questionnaire
+- Personalized checklist generation
+- Progress tracking
+
+### Phase 4: Industry Guides ✅
+- 40+ industries listed
+- Searchable interface
+- Industry-specific information
+
+### Phase 5: Registration & Tax ✅
+- 10 registration guides
+- Tax calculators (GST, Income, IRC)
+- Tax calendar
+- Compliance information
+
+### Phase 6: Downloads & Learning ✅
+- 20+ downloadable templates
+- 20+ learning articles
+- Business toolkit
+
+### Phase 7: AI Assistant & Directory ✅
+- AI chatbot interface
+- Government agency directory
+- Contact information
+
+### Phase 8: Member Dashboard ✅
+- User dashboard
+- Profile management
+- Saved resources
+
+### Phase 9: Admin Dashboard ✅
+- Content management
+- User management
+- Analytics
+
+### Phase 10: Search & SEO ✅
+- Intelligent search
+- SEO optimization
+- Structured data
+
+### Phase 11: Testing & Deployment ✅
+- Quality assurance
+- Performance optimization
+- Production ready
 
 ## License
 
-MIT
+MIT License - See LICENSE file for details
+
+## Support
+
+For questions or support, contact: info@fintrackpng.com
