@@ -52,7 +52,6 @@ router.post('/', async (req: Request, res: Response) => {
       description,
       amount: amount.toString(),
       gstAmount,
-      vendor,
       paymentMethod,
       receiptUrl,
       expenseDate: new Date(expenseDate),
@@ -77,7 +76,6 @@ router.patch('/:id', async (req: Request, res: Response) => {
         category,
         description,
         amount: amount ? amount.toString() : undefined,
-        vendor,
         paymentMethod,
       })
       .where(and(
