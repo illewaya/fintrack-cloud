@@ -107,7 +107,7 @@ export function useFinancialSummary(startDate?: string, endDate?: string) {
   })
 }
 
-export function useExpensesByCategory() {
+export function useExpensesByCategoryReport() {
   return useQuery({
     queryKey: ['reports', 'expenses-by-category'],
     queryFn: () => reportService.getExpensesByCategory().then(res => res.data),
